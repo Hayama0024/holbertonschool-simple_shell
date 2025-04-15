@@ -26,13 +26,7 @@ int main(void)
 
 		args = split_line(line);
 		if (args[0] != NULL)
-		{
 			status = execute_command(args);
-			if (status != 0)
-			{
-				printf("something went wrong\n");
-			}
-		}
 
 		free(line);
 		free_args(args);
