@@ -14,9 +14,10 @@ int main(void)
 
 	while (1)
 	{
-		display_prompt();
-		line = read_input();
+		if (isatty(STDIN_FILENO))
+			display_prompt();
 
+		line = read_input();
 		if (line == NULL)
 		{
 			write(STDOUT_FILENO, "\n", 1);
