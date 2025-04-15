@@ -55,7 +55,7 @@ char **split_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	token = stroken(line, " \t\r\n");
+	token = strtok(line, " \t\r\n");
 	while (token != NULL)
 	{
 		tokens[i] = token;
@@ -64,7 +64,7 @@ char **split_line(char *line)
 		if (i >= bufsize)
 		{
 			bufsize *= 2;
-			tokens = realloc(tokens, sizeof(char *)bufsize);
+			tokens = realloc(tokens, sizeof(char *) * bufsize);
 			if (!tokens)
 			{
 				perror("realloc");
