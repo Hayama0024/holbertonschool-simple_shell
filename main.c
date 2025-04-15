@@ -14,8 +14,7 @@ int main(void)
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			display_prompt();
+		display_prompt();
 
 		line = read_input();
 		if (line == NULL)
