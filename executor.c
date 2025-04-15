@@ -24,16 +24,20 @@ int execute_command(char **args)
 
 	if (pid == -1)
 	{
-		perror('fork');
+		perror("fork");
 		return (-1);
 	}
 
 	if (pid == 0) /*if the current prosess is a child process*/
 	{
-		if (execve(args[0], NULL, environ) == -1) /*run without arguments*/
+		/* Pass only the command without additional arguments */
+		char *empty_args[] = {args[0], NULL};
+
+		/*run without additional arguments*/
+		if (execve(args[0], empty_args, environ) == -1)
 		{
-			perror(args[0]);
-			exit(EXIT_FAIRURE);
+			perror("args[0]");
+			exit(EXIT_FAILURE);
 		}
 	}
 	else /*for the parent process*/
