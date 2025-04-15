@@ -21,10 +21,9 @@ int main(void)
 		if (line == NULL)
 		{
 			if (isatty(STDIN_FILENO))
-			{
 				write(STDOUT_FILENO, "\n", 1);
-			}
-				break;
+			
+			break;
 		}
 
 		args = split_line(line);

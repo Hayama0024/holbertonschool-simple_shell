@@ -9,10 +9,8 @@
  */
 void display_prompt(void)
 {
-	if (isatty(STDIN_FILENO))
-	write(STDOUT_FILENO, "$ ", 2);
+		write(STDOUT_FILENO, "$ ", 2);
 }
-
 /**
  * free_args - frees args
  * @args:array of characters
