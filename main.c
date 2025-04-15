@@ -11,8 +11,7 @@ int main(void)
 {
 	char *line = NULL;
 	char **args = NULL;
-
-	status = 1;
+	int status = 1;
 
 	while (1)
 	{
