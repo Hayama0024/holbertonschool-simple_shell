@@ -32,8 +32,9 @@ int execute_command(char **args)
 	{
 		/* Pass only the command without additional arguments */
 		char *empty_args[2];
+
 		empty_args[0] = args[0];
-		empty_args[1] = NULL;	
+		empty_args[1] = NULL;
 
 		/*run without additional arguments*/
 		if (execve(args[0], empty_args, environ) == -1)
