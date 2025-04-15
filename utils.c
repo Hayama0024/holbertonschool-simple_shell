@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 /**
  * display_prompt - Prints the shell prompt to the standard output
  * This function displays a simple "$ " prompt on the terminal,
