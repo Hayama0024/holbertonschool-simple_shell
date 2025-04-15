@@ -9,7 +9,7 @@
  */
 void display_prompt(void)
 {
-	if (istty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO))
 	write(STDOUT_FILENO, "$ ", 2);
 }
 
