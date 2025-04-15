@@ -39,7 +39,7 @@ int execute_command(char **args)
 		/*run without additional arguments*/
 		if (execve(args[0], empty_args, environ) == -1)
 		{
-			perror("args[0]");
+			perror("Error");
 			exit(EXIT_FAILURE);
 		}
 	}
