@@ -20,8 +20,11 @@ int main(void)
 		line = read_input();
 		if (line == NULL)
 		{
-			write(STDOUT_FILENO, "\n", 1);
-			break;
+			if (isatty(STDIN_FILENO))
+			{
+				write(STDOUT_FILENO, "\n", 1);
+				break;
+			}
 		}
 
 		args = split_line(line);
