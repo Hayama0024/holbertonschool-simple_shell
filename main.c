@@ -12,22 +12,23 @@ int main(void)
 	char *line = NULL;
 	char **args = NULL;
 
-	status = 1;
-
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
 		display_prompt();
-		line = read_input();
 
+		line = read_input();
 		if (line == NULL)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			
 			break;
 		}
 
 		args = split_line(line);
 		if (args[0] != NULL)
-			status = execute_command(args);
+			execute_command(args);
 
 		free(line);
 		free_args(args);
