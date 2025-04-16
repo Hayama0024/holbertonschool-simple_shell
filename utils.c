@@ -20,6 +20,23 @@
  	if (args != NULL)
  		free(args);
  }
+/**
+ * _get_path - Gets the value of PATH from environ
+ * Return: pointer to PATH value or NULL
+ */
+char *_get_path(void)
+{
+	extern char **environ;
+	int i = 0;
+
+	while (environ[i])
+	{
+		if (strncmp(environ[i], "PATH=", 5) == 0)
+			return (environ[i] + 5);
+		i++;
+	}
+	return (NULL);
+}
  /**
   * which_path - Searches for a command in
   * the directories listed in PATH
@@ -27,23 +44,19 @@
   * Return: A pointer to the full path string if found (must be freed),
   *         or NULL if the command is not found.
   */
- 
  char *which_path(char *command)
  {
  	char *path_env = getenv("PATH");
  	char *path_copy = NULL, *dir, *full_path;
  	struct stat st;
- 
- 	if (!path_env)
+
+ 	if (!path_env || !command)
  		return (NULL);
- 
- 	if (command[0] == '/' || command[0] == '.')
- 	{
- 		if (stat(command, &st) == 0)
- 			return (strdup(command));
- 		return (NULL);
- 	}
- 
+
+ 	path_copy = strdup(path_env);
+ 	if (!path_copy)
+		return (NULL);
+
  	dir = strtok(path_copy, ":");
  	while (dir)
  	{
@@ -53,15 +66,15 @@
  			free(path_copy);
  			return (NULL);
  		}
- 
+
  		sprintf(full_path, "%s/%s", dir, command);
- 
+
  		if (stat(full_path, &st) == 0)
  		{
  			free(path_copy);
  			return (full_path);
  		}
- 
+
  		free(full_path);
  		dir = strtok(NULL, ":");
  	}

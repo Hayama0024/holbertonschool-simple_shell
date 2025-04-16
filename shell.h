@@ -29,6 +29,6 @@ void print_error(char *prog_name, char *cmd);
 
 
 char *which_path(char *command);
-
+char *_get_path(void);
 #endif /* SHELL_H */
 
