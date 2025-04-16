@@ -20,3 +20,51 @@ void free_args(char **args)
 	if (args != NULL)
 		free(args);
 }
+/**
+ * which_path - Searches for a command in
+ * the directories listed in PATH
+ * @command: The command name (e.g., "ls") to search for
+ * Return: A pointer to the full path string if found (must be freed),
+ *         or NULL if the command is not found.
+ */
+
+char *which_path(char *command)
+{
+	char *path_env = getenv("PATH");
+	char *path_copy, *dir, *full_path;
+	struct stat st;
+
+	if (!path_env)
+		return (NULL);
+
+	if (command[0] == '/' || command[0] == '.')
+	{
+		if (stat(command, &st) == 0)
+			return (strdup(command));
+		return (NULL);
+	}
+
+	dir = strtokj(path_copy, ":");
+	while (dir)
+	{
+		full_path = malloc(strlen(dir) + strlen(command) + 2);
+		if (!full_path)
+		{
+			free(path_copy);
+			return (NULL);
+		}
+
+		sprintf(full_path, "%s/%s", dir, command);
+
+		if (stat(full_path, &st) == 0)
+		{
+			free(path_copy);
+			return (full_path);
+		}
+
+		free(full_path);
+		dir = strtok(NULL, ":");
+	}
+	free(path_copy);
+	return (NULL);
+}
