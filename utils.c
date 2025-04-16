@@ -44,7 +44,7 @@ char *which_path(char *command)
 		return (NULL);
 	}
 
-	dir = strtokj(path_copy, ":");
+	dir = strtok(path_copy, ":");
 	while (dir)
 	{
 		full_path = malloc(strlen(dir) + strlen(command) + 2);
