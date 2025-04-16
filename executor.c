@@ -30,13 +30,6 @@ int execute_command(char **args)
 
 	if (pid == 0) /*if the current prosess is a child process*/
 	{
-		/* Pass only the command without additional arguments
-		char *empty_args[2];
-
-		empty_args[0] = args[0];
-		empty_args[1] = NULL;*/
-
-		/*run without additional arguments*/
 		if (execve(args[0], args, environ) == -1)
 		{
 			perror("Error");
@@ -48,5 +41,5 @@ int execute_command(char **args)
 		waitpid(pid, &status, 0); /*wait for child process to finish*/
 	}
 
-	return (1);/*continuing the shell*/
+	return (1);/*continue the shell*/
 }
