@@ -16,12 +16,8 @@ pid_t pid;
 int status;
 char *cmd_path = NULL;
 
-	if (args[0] == NULL)
-		return (1);
-
-	if (args[0][0] == '/' || args[0][0] == '.')
+	if (access(args[0], X_OK) == 0)
 	{
-		if (access(args[0], X_OK) == 0)
 			cmd_path = strdup(args[0]);
 	}
 	else
@@ -41,14 +37,15 @@ char *cmd_path = NULL;
 	if (pid == -1)
 	{
 		perror("fork");
+		free(cmd_path != args[0] ? cmd_path : NULL);
 		return (-1);
 	}
 
 	if (pid == 0)/*child process*/
 	{
 		execve(cmd_path, args, environ);
-		perror("./hsh");
-		exit(127);
+		perror("execve");
+		exit(1);
 	}
 	else/*parent process*/
 	{

@@ -11,6 +11,7 @@ int main(void)
 {
 	char *line = NULL;
 	char **args = NULL;
+	status = 1;
 
 	while (1)
 	{
@@ -28,7 +29,7 @@ int main(void)
 
 		args = split_line(line);
 		if (args[0] != NULL)
-			execute_command(args);
+			status = execute_command(args);
 
 		free(line);
 		free_args(args);

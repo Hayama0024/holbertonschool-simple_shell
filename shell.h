@@ -24,6 +24,7 @@ int execute_command(char **args);
 
 /* メモリ解放やユーティリティ */
 void free_args(char **args);
+int _strlen(const char *s);
 void print_error(char *prog_name, char *cmd);
 
 
