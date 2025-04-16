@@ -29,36 +29,33 @@ char *cmd_path = NULL;
 		cmd_path = which_path(args[0]);  /* custom implementation */
 	}
 
-	if (cmd_path == NULL)
+	if (!cmd_path)
 	{
-		dprintf(STDERR_FILENO, "./hsh: 1: %s: not found\n", args[0]);
-		return (1);  /* no fork*/
+		write(STDERR_FILENO, "./hsh: 1: ", 10);
+		write(STDERR_FILENO, args[0], strlen(args[0]));
+		write(STDERR_FILENO, ": not found\n", 12);
+		_exit(127);
 	}
 
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("fork");
-	free(cmd_path);
-	return (-1);
+		return (-1);
 	}
 
-	if (pid == 0)
+	if (pid == 0)/*child process*/
 	{
-		/* Child process */
-		if (execve(cmd_path, args, environ) == -1)
-		{
-			perror("execve");
-			free(cmd_path);
-			exit(127);
-		}
+		execve(cmd_path, args, environ);
+		perror("./hsh");
+		exit(127);
 	}
-	else
+	else/*parent process*/
 	{
-		/* Parent process */
 		waitpid(pid, &status, 0);
 	}
+	if (cmd_path != args[0])
+		free(cmd_path);
 
-	free(cmd_path);
 	return (1);
 }
