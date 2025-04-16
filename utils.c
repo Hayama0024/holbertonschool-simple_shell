@@ -31,7 +31,6 @@
  char *which_path(char *command)
  {
  	char *path_env = getenv("PATH");
- 	char *path_copy, *dir, *full_path;
  	char *path_copy = NULL, *dir, *full_path;
  	struct stat st;
  
