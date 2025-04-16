@@ -26,5 +26,8 @@ int execute_command(char **args);
 void free_args(char **args);
 void print_error(char *prog_name, char *cmd);
 
+
+char *which_path(char *command);
+
 #endif /* SHELL_H */
 
