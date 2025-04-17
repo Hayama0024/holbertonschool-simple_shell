@@ -44,15 +44,13 @@
  	if (pid == -1)
  	{
  		perror("fork");
-		free(cmd_path);
  		return (-1);
  	}
  
  	if (pid == 0) /*if the current prosess is a child process*/
  	{
-		execve(cmd_path, args, environ);
+		if (execve(cmd_path, args, environ) == -1);
  		perror("execve");
- 		free(cmd_path);
  		exit(127);
  		
  	}
@@ -60,7 +58,8 @@
  	{
  		waitpid(pid, &status, 0); /*wait for child process to finish*/
  	}
- 
- 	free(cmd_path);
- 	return (1);/*continue the shell*/
+	if (cmd_path != args[0])
+		free(cmd_path);
+ 	
+	return (1);/*continue the shell*/
  }
