@@ -49,7 +49,7 @@
  
  	if (pid == 0) /*if the current prosess is a child process*/
  	{
-		if (execve(cmd_path, args, environ) == -1);
+		if (execve(cmd_path, args, environ) == -1)
  		perror("execve");
  		exit(127);
  		
