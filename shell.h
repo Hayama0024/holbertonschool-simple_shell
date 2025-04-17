@@ -24,7 +24,11 @@ int execute_command(char **args);
 
 /* メモリ解放やユーティリティ */
 void free_args(char **args);
+int _strlen(const char *s);
 void print_error(char *prog_name, char *cmd);
 
+
+char *which_path(char *command);
+char *_get_path(void);
 #endif /* SHELL_H */
 
