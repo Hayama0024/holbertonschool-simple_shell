@@ -16,36 +16,45 @@
  	int status;
  	char *cmd_path;
  
- 	if (args[0] == NULL) /*in case of an empty command*/
- 	{
+ 	if (!args || !args[0])
  		return (1);
- 	}
  
- 	cmd_path = which_path(args[0]);
- 	if (cmd_path == NULL)
+ 	if (args[0][0] == '/' || args[0][0] == '.')
  	{
- 		perror("Command not found");
- 		return (1);
+ 		if (access(args[0], X_OK) == 0)
+			cmd_path = strdup(args[0]);
+		else
+			cmd_path = NULL;
  	}
+	else
+	{
+		cmd_path = which_path(args[0]);
+	}
+
+	if (!cmd_path)
+	{
+		write(STDERR_FILENO, "./hsh: 1: ", 10);
+		write(STDERR_FILENO, args[0], strlen(args[0]));
+		write(STDERR_FILENO, ": not found\n", 12);
+		exit(127);
+	}
  
  	pid = fork();
  
  	if (pid == -1)
  	{
  		perror("fork");
+		free(cmd_path);
  		return (-1);
  	}
  
  	if (pid == 0) /*if the current prosess is a child process*/
  	{
- 		if (execve(args[0], args, environ) == -1)
- 		if (execve(cmd_path, args, environ) == -1)
- 		{
- 			perror("Error");
- 			perror("execve");
- 			free(cmd_path);
- 			exit(EXIT_FAILURE);
- 		}
+		execve(cmd_path, args, environ);
+ 		perror("execve");
+ 		free(cmd_path);
+ 		exit(127);
+ 		
  	}
  	else /*for the parent process*/
  	{
