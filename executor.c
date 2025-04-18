@@ -1,6 +1,20 @@
 #include "shell.h"
 
 
+/**
+ * print_not_found_error - Prints a standardized error
+ *                         when a command is not found
+ * @command: The command that failed to execute
+ * Return: Nothing (void)
+ */
+
+void print_not_found_error(char *command)
+{
+	write(STDERR_FILENO, "./hsh: 1: ", 10);
+	write(STDERR_FILENO, command, strlen(command));
+	write(STDERR_FILENO, ": not found\n", 12);
+}
+
  /**
   * execute_command - Executes a command using fork and execve
   * @args: an array of strings containing
@@ -11,35 +25,25 @@
 
 int execute_command(char **args)
 {
-	 pid_t pid;
-	 int status;
-	 char *cmd_path;
+	pid_t pid;
+	int status, builtin_result;
+	char *cmd_path;
 
 	if (!args || !args[0])
 		return (1);
 
-	if (strchr(args[0], '/'))
-	{
-		if (access(args[0], X_OK) == 0)
-			cmd_path = strdup(args[0]);
-		else
-			cmd_path = NULL;
-	}
-	else
-	{
-		cmd_path = which_path(args[0]);
-	}
+	builtin_result = check_and_run_builtin(args);
+	if (builtin_result != -1)
+		return (builtin_result);
 
+	cmd_path = get_command_path(args[0]);
 	if (!cmd_path)
 	{
-		write(STDERR_FILENO, "./hsh: 1: ", 10);
-		write(STDERR_FILENO, args[0], strlen(args[0]));
-		write(STDERR_FILENO, ": not found\n", 12);
+		print_not_found_error(args[0]);
 		return (127);
 	}
 
 	pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork");
@@ -54,14 +58,11 @@ int execute_command(char **args)
 		exit(127);
 	}
 	else /*for the parent process*/
-	{
-		waitpid(pid, &status, 0); /*wait for child process to finish*/
-	}
+		waitpid(pid, &status, 0);
+
 	if (cmd_path != args[0])
 		free(cmd_path);
 
-	if (WIFEXITED(status)) /*check if the operation was successful*/
-		return (WEXITSTATUS(status)); /*extract the exit code*/
-	else
-		return (1);/*continue the shell*/
+	 /*check if the operation was successful*/
+	return (WIFEXITED(status) ? WEXITSTATUS(status) : 1);
 }

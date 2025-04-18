@@ -30,5 +30,8 @@ void print_error(char *prog_name, char *cmd);
 
 char *which_path(char *command);
 char *_get_path(void);
+int handle_builtin(char **args);
+int check_and_run_builtin(char **args);
+char *get_command_path(char *command);
+void print_not_found_error(char *command);
 #endif /* SHELL_H */
-
