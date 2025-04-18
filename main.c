@@ -11,6 +11,7 @@ int main(void)
 {
 	char *line = NULL;
 	char **args = NULL;
+	int last_status = 0;
 
 	while (1)
 	{
@@ -33,10 +34,10 @@ int main(void)
 			{
 				free(line);
 				free_args(args);
-				exit(2);
+				exit(last_status);
 			}
 
-			execute_command(args);
+			last_status = execute_command(args);
 		}
 
 		free(line);
