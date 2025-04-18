@@ -33,7 +33,7 @@ int main(void)
 			{
 				free(line);
 				free_args(args);
-				exit(0);
+				exit(2);
 			}
 
 			execute_command(args);
