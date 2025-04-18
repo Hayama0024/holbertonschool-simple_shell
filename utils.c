@@ -96,12 +96,21 @@ char *which_path(char *command)
 
 char *get_command_path(char *command)
 {
+	char *path_env;
+	char *cmd_path = NULL;
+
 	if (strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
-			return (strdup(command));
+			cmd_path = strdup(command);
 
-		return (NULL);
+		return (cmd_path);
 	}
-		return (which_path(command));
+
+	path_env = _get_path();
+
+	if (!path_env)
+		return (NULL);
+
+	return (which_path(command));
 }
