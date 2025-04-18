@@ -19,7 +19,7 @@
  	if (!args || !args[0])
  		return (1);
  
- 	if (args[0][0] == '/')
+ 	if (args[0][0], '/')
  	{
  		if (access(args[0], X_OK) == 0)
 			cmd_path = strdup(args[0]);
