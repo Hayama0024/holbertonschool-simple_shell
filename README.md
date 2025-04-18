@@ -27,21 +27,24 @@ The purpose of this project is to understand how the shell works.
 |[utils.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/utils.c)|Auxiliary functions (e.g. prompt display, momory freeing) etc...)
 
 
-## Feauture:sparkles:
+## Feautures :sparkles:
 - Custom interactive shell prompt
 - Executes commands found in the system's PATH
 - Supports commands with arguments (e.g., ls -l, echo hello)
 - Gracefully handles command not found errors
 - Handles EOF (Ctrl+D) for clean shell exit
-- Built-in support for:
-    exit — exits the shell
-    env — displays the current environ
+- Built-in support for:<br>
+    exit — exits the shell<br>
+    env — displays the current environ<br>
 
-##Limitations:no_entry_sign:
--No support for semicolons ;, pipes |, redirections < >, or backgrounding &
--No handling of special characters like ", ', \, *, #, etc.
--No cursor movement or line editing features
--No implementation of additional built-in commands (e.g., cd, alias, etc.)
+## Limitations :no_entry_sign:
+
+ - No support for semicolons ;, pipes |, redirections < >, or
+   backgrounding &
+ - No handling of special characters like ", ', \, *, #, etc.
+ - No cursor movement or line editing features
+ - No implementation of additional built-in commands (e.g., cd, alias,
+   etc.)
 
 ## Install :arrow_down:
 ```
