@@ -96,16 +96,12 @@ char *which_path(char *command)
 
 char *get_command_path(char *command)
 {
-	char *cmd_path = NULL;
-
 	if (strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
-			cmd_path = strdup(command);
+			return (strdup(command));
+
+		return (NULL);
 	}
-	else
-	{
-		cmd_path = which_path(command);
-	}
-	return (cmd_path);
+		return (which_path(command));
 }
