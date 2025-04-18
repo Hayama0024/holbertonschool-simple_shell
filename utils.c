@@ -2,20 +2,23 @@
  #include <stdio.h>
  #include <unistd.h>
  #include <stdlib.h>
- /**
-  * display_prompt - Prints the shell prompt to the standard output
-  * This function displays a simple "$ " prompt on the terminal,
-  * inviting the user to type a command.
-  */
+
+/**
+ * display_prompt - Prints the shell prompt to the standard output
+ * This function displays a simple "$ " prompt on the terminal,
+ * inviting the user to type a command.
+ */
+
 void display_prompt(void)
 {
 	write(STDOUT_FILENO, "$ ", 2);
 }
 
- /**
-  * free_args - frees args
-  * @args:array of characters
-  */
+/**
+ * free_args - frees args
+ * @args:array of characters
+ */
+
 void free_args(char **args)
 {
 	if (args != NULL)
@@ -39,13 +42,13 @@ char *_get_path(void)
 	}
 	return (NULL);
 }
- /**
-  * which_path - Searches for a command in
-  * the directories listed in PATH
-  * @command: The command name (e.g., "ls") to search for
-  * Return: A pointer to the full path string if found (must be freed),
-  *         or NULL if the command is not found.
-  */
+/**
+ * which_path - Searches for a command in
+ * the directories listed in PATH
+ * @command: The command name (e.g., "ls") to search for
+ * Return: A pointer to the full path string if found (must be freed),
+ *         or NULL if the command is not found.
+ */
 
 char *which_path(char *command)
 {
