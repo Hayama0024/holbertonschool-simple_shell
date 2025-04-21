@@ -17,6 +17,17 @@ int handle_builtin(char **args)
 	{
 		return (0);
 	}
+	else if (strcmp(args[0], "env") == 0)
+	{
+		int i = 0;
+		while (environ[i])
+		{
+			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 1);
+			i++;
+		}
+		return (1);
+	}
 	return (-1);
 }
 
