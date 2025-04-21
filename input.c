@@ -58,7 +58,7 @@ char **split_line(char *line)
 	token = strtok(line, " \t\r\n");
 	while (token != NULL)
 	{
-		tokens[i] = token;
+		tokens[i] = strdup(token);
 		i++;
 
 		if (i >= bufsize)
