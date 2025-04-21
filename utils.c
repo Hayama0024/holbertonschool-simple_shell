@@ -117,7 +117,7 @@ char *get_command_path(char *command)
 
 	path_env = _get_path();
 
-	if (!path_env)
+	if (!path_env || path_env[0] == '\0')
 		return (NULL);
 
 	return (which_path(command));
