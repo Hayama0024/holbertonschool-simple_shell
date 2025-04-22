@@ -47,6 +47,6 @@ int check_and_run_builtin(char **args)
 	if (strcmp(args[0], "exit") == 0)
 		exit(0);
 
-	return handle_builyin(args);
+	return handle_builtin(args);
 }
 
