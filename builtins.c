@@ -44,6 +44,6 @@ int handle_builtin(char **args)
 
 int check_and_run_builtin(char **args)
 {
-	return handle_builyin(args);
+	return handle_builtin(args);
 }
 
