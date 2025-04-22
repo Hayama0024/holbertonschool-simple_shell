@@ -28,6 +28,18 @@ char *read_input(void)
 }
 
 /**
+ * is_whitespace - Check if a character is a whitespace character
+ * @c: The character to check
+ *
+ * Return: 1 if the character is a whitespace character, 0 otherwise
+ */
+
+int is_whitespace(char c)
+{
+    return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f');
+}
+
+/**
  * trim_whitespace - Trim leading and trailing whitespace from a string
  * @str: The input string to trim
  *
@@ -38,12 +50,13 @@ char *trim_whitespace(char *str)
 {
 	char *end;
 
-	while (isspace((unsigned char)*str))
+	while (is_whitespace(*str))
 	{
 		str++;
 	}
+
 	end = str + strlen(str) - 1;
-	while (end > str && isspace((unsigned char)*end))
+	while (end > str && is_whitespace(*end))
 	{
 		end--;
 	}
