@@ -34,4 +34,5 @@ int handle_builtin(char **args);
 int check_and_run_builtin(char **args);
 char *get_command_path(char *command);
 void print_not_found_error(char *command);
+char **split_lines_by_newline(char *line);
 #endif /* SHELL_H */

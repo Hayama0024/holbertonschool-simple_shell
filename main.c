@@ -11,7 +11,9 @@ int main(void)
 {
 	char *line = NULL;
 	char **args = NULL;
+	char **lines;
 	int last_status = 0;
+	int i = 0;
 
 	while (1)
 	{
@@ -27,21 +29,26 @@ int main(void)
 			break;
 		}
 
-		args = split_line(line);
-		if (args[0] != NULL)
+		lines = split_lines_by_newline(line);
+
+		for (i = 0; lines[i]; i++)
 		{
-			last_status = execute_command(args);
-
-			if (last_status == 0)
+			args = split_line(line);
+			if (args[0] != NULL)
 			{
-				free(line);
-				free_args(args);
-				exit(0);
-			}
-		}
+				last_status = execute_command(args);
 
+				if (last_status == 0)
+				{
+					free(line);
+					free_args(args);
+					free_args(lines);
+					exit(0);
+				}
+			}
+
+		free_args(lines);
 		free(line);
-		free_args(args);
 	}
-	return (last_status);
+	return (0);
 }

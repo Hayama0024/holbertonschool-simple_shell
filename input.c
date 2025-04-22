@@ -76,3 +76,45 @@ char **split_line(char *line)
 	tokens[i] = NULL;
 	return (tokens);
 }
+
+/**
+ * split_lines_by_newline - Split a string into lines by '\n'
+ * @line: Input string to split
+ * Return: NULL-terminated array of lines
+ */
+
+
+ char **split_lines_by_newline(char *line)
+{
+	char *token;
+	char **lines = NULL;
+	int bufsize = 16;
+	int i = 0;
+
+	lines = malloc(sizeof(char *) * bufsize);
+	if (!lines)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+
+	token = strtok(line, "\n");
+	while (token != NULL)
+	{
+		lines[i++] = strdup(token);
+		if (i >= bufsize)
+		{
+			bufsize *= 2;
+			lines = realloc(lines, sizeof(char *) * bufsize);
+			if (!lines)
+			{
+				perror("realloc");
+				exit(EXIT_FAILURE);
+			}
+		}
+		token = strtok(NULL, "\n");
+	}
+	lines[i] = NULL;
+	return (lines);
+}
+
