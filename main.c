@@ -11,7 +11,9 @@ int main(void)
 {
 	char *line = NULL;
 	char **args = NULL;
+	char **lines;
 	int last_status = 0;
+	int i = 0;
 
 	while (1)
 	{
@@ -27,21 +29,28 @@ int main(void)
 			break;
 		}
 
-		args = split_line(line);
-		if (args[0] != NULL)
-		{
-			if (strcmp(args[0], "exit") == 0)
-			{
-				free(line);
-				free_args(args);
-				exit(last_status);
-			}
+		lines = split_lines_by_newline(line);
+		free(line);
 
-			last_status = execute_command(args);
+		for (i = 0; lines[i]; i++)
+		{
+			args = split_line(lines[i]);
+
+			if (args != NULL && args[0] != NULL)
+			{
+				last_status = execute_command(args);
+
+				if (last_status == 0)
+				{
+					free_args(args);
+					free_args(lines);
+					exit(0);
+				}
+			}
+			free_args(args);
 		}
 
-		free(line);
-		free_args(args);
+		free_args(lines);
 	}
-	return (last_status);
+	return (0);
 }

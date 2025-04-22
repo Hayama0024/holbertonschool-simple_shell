@@ -28,6 +28,45 @@ char *read_input(void)
 }
 
 /**
+ * is_whitespace - Check if a character is a whitespace character
+ * @c: The character to check
+ *
+ * Return: 1 if the character is a whitespace character, 0 otherwise
+ */
+
+int is_whitespace(char c)
+{
+    return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f');
+}
+
+/**
+ * trim_whitespace - Trim leading and trailing whitespace from a string
+ * @str: The input string to trim
+ *
+ * Return: Pointer to the trimmed string
+ */
+
+char *trim_whitespace(char *str)
+{
+	char *end;
+
+	while (is_whitespace(*str))
+	{
+		str++;
+	}
+
+	end = str + strlen(str) - 1;
+	while (end > str && is_whitespace(*end))
+	{
+		end--;
+	}
+
+	*(end + 1) = 0;
+
+	return (str);
+}
+
+/**
  * split_line - Split a line into tokens (words) by whitespace
  *
  * This function takes a string and splits it into tokens based on
@@ -55,6 +94,13 @@ char **split_line(char *line)
 		exit(EXIT_FAILURE);
 	}
 
+	line = trim_whitespace(line);
+	if (*line == '\0')
+	{
+		free(tokens);
+		return (NULL);
+	}
+
 	token = strtok(line, " \t\r\n");
 	while (token != NULL)
 	{
@@ -74,5 +120,54 @@ char **split_line(char *line)
 		token = strtok(NULL, " \t\r\n");
 	}
 	tokens[i] = NULL;
-	return (tokens);
+
+	if (i == 0)
+	{
+		free(tokens);
+		return (NULL);
+	}
+
+		return (tokens);
 }
+
+/**
+ * split_lines_by_newline - Split a string into lines by '\n'
+ * @line: Input string to split
+ * Return: NULL-terminated array of lines
+ */
+
+
+char **split_lines_by_newline(char *line)
+{
+	char *token;
+	char **lines = NULL;
+	int bufsize = 16;
+	int i = 0;
+
+	lines = malloc(sizeof(char *) * bufsize);
+	if (!lines)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+
+	token = strtok(line, "\n");
+	while (token != NULL)
+	{
+		lines[i++] = strdup(token);
+		if (i >= bufsize)
+		{
+			bufsize *= 2;
+			lines = realloc(lines, sizeof(char *) * bufsize);
+			if (!lines)
+			{
+				perror("realloc");
+				exit(EXIT_FAILURE);
+			}
+		}
+		token = strtok(NULL, "\n");
+	}
+	lines[i] = NULL;
+	return (lines);
+}
+
