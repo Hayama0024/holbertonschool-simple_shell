@@ -28,6 +28,32 @@ char *read_input(void)
 }
 
 /**
+ * trim_whitespace - Trim leading and trailing whitespace from a string
+ * @str: The input string to trim
+ *
+ * Return: Pointer to the trimmed string
+ */
+
+char *trim_whitespace(char *str)
+{
+	char *end;
+
+	while (isspace((unsigned char)*str))
+	{
+		str++;
+	}
+	end = str + strlen(str) - 1;
+	while (end > str && isspace((unsigned char)*end))
+	{
+		end--;
+	}
+
+	*(end + 1) = 0;
+
+	return (str);
+}
+
+/**
  * split_line - Split a line into tokens (words) by whitespace
  *
  * This function takes a string and splits it into tokens based on
@@ -53,6 +79,13 @@ char **split_line(char *line)
 	{
 		perror("malloc");
 		exit(EXIT_FAILURE);
+	}
+
+	line = trim_whitespace(line);
+	if (*line == '\0')
+	{
+		free(tokens);
+		return (NULL);
 	}
 
 	token = strtok(line, " \t\r\n");
@@ -91,7 +124,7 @@ char **split_line(char *line)
  */
 
 
- char **split_lines_by_newline(char *line)
+char **split_lines_by_newline(char *line)
 {
 	char *token;
 	char **lines = NULL;
