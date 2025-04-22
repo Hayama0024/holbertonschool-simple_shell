@@ -48,7 +48,7 @@ int check_and_run_builtin(char **args)
 	if (strcmp(args[0], "exit") == 0)
 		exit(0);
 
-	if (strcmp(args[0], "env" ) == 0)
+	if (strcmp(args[0], "env") == 0)
 	{
 		int i = 0;
 
