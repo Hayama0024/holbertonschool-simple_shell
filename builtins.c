@@ -26,7 +26,7 @@ int handle_builtin(char **args)
 			write(STDOUT_FILENO, "\n", 1);
 			i++;
 		}
-		return (1);
+		return (0);
 	}
 	return (-1);
 }
