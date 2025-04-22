@@ -74,7 +74,14 @@ char **split_line(char *line)
 		token = strtok(NULL, " \t\r\n");
 	}
 	tokens[i] = NULL;
-	return (tokens);
+
+	if (i == 0)
+	{
+		free(tokens);
+		return (NULL);
+	}
+
+		return (tokens);
 }
 
 /**
