@@ -26,7 +26,7 @@ int handle_builtin(char **args)
 			write(STDOUT_FILENO, "\n", 1);
 			i++;
 		}
-		return (0);
+		return (1);
 	}
 	return (-1);
 }
@@ -44,11 +44,6 @@ int handle_builtin(char **args)
 
 int check_and_run_builtin(char **args)
 {
-	int result = handle_builtin(args);
-
-	if (result == 0)
-		exit(0);
-
-	return (result);
+	return handle_builyin(args);
 }
 

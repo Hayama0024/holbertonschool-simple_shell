@@ -30,14 +30,14 @@ int main(void)
 		args = split_line(line);
 		if (args[0] != NULL)
 		{
-			if (strcmp(args[0], "exit") == 0)
+			last_status = execute_command(args);
+
+			if (last_status == 0)
 			{
 				free(line);
 				free_args(args);
-				exit(last_status);
+				exit(0);
 			}
-
-			last_status = execute_command(args);
 		}
 
 		free(line);
