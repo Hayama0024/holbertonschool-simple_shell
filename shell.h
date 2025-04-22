@@ -10,6 +10,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 /* 環境変数 */
 extern char **environ;
