@@ -30,17 +30,17 @@ int main(void)
 		}
 
 		lines = split_lines_by_newline(line);
+		free(line);
 
 		for (i = 0; lines[i]; i++)
 		{
-			args = split_line(line);
+			args = split_line(line[i]);
 			if (args[0] != NULL)
 			{
 				last_status = execute_command(args);
 
 				if (last_status == 0)
 				{
-					free(line);
 					free_args(args);
 					free_args(lines);
 					exit(0);
@@ -50,7 +50,6 @@ int main(void)
 		}
 
 		free_args(lines);
-		free(line);
 	}
 	return (0);
 }
