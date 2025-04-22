@@ -46,6 +46,8 @@ int main(void)
 					exit(0);
 				}
 			}
+			free_args(args);
+		}
 
 		free_args(lines);
 		free(line);
