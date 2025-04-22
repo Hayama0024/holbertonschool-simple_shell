@@ -34,8 +34,8 @@ int main(void)
 
 		for (i = 0; lines[i]; i++)
 		{
-			args = split_line(line[i]);
-			if (args[0] != NULL)
+			args = split_line(lines[i]);
+			if (args != NULL && args[0] != NULL)
 			{
 				last_status = execute_command(args);
 
