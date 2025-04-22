@@ -37,13 +37,16 @@ int handle_builtin(char **args)
  * @args: Array of command arguments
  *
  * If the command is a built-in ("exit" or "env"), it executes it.
- * If the built-in is "exit", the shell process is terminated.
+ * If the command is "exit", the shell process is terminated.
  *
- * Return: -1 if not a built-in, 0 if "exit", or the built-in's return code
+ * Return: -1 if not a built-in, 0 if "exit", or the built-in's return value
  */
 
 int check_and_run_builtin(char **args)
 {
+	if (strcmp(args[0], "exit") == 0)
+		exit(0);
+
 	return handle_builyin(args);
 }
 
