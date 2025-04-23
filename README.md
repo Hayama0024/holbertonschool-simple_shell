@@ -23,20 +23,19 @@ The purpose of this project is to understand how the shell works.
 |[builtins.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/builtins.c)|Functions for built-in commands|
 | [executor.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/executor.c) | Execution function |
 |[input.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/input.c) |Functions for reading user input|
-|[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| main function|
+|[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| Main function|
 [shell.h](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/shell.h)|Prototypes functions and headers|
 |[split_line.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/split_line.c) |Functions for splitting and processing commands|
 |[utils.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/utils.c)|Auxiliary functions (e.g. prompt display, momory freeing etc...)
 
 
 ## Feautures :sparkles:
-- Custom interactive shell prompt
 - Executes commands found in the system's PATH
 - Supports commands with arguments (e.g., ls -l, echo hello)
 - Gracefully handles command not found errors
 - Handles EOF (Ctrl+D) for clean shell exit
 - Built-in support for:<br>
-    exit — exits the shell<br>
+    exit — exit the shell<br>
     env — displays the current environment<br>
 
 ## Limitations :no_entry_sign:
