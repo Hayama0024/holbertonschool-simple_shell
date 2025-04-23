@@ -26,7 +26,7 @@ The purpose of this project is to understand how the shell works.
 |[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| main function|
 [shell.h](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/shell.h)|Prototypes functions and headers|
 |[split_line.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/split_line.c) |Functions for splitting and processing commands|
-|[utils.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/utils.c)|Auxiliary functions (e.g. prompt display, momory freeing) etc...)
+|[utils.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/utils.c)|Auxiliary functions (e.g. prompt display, momory freeing etc...)
 
 
 ## Feautures :sparkles:
@@ -41,7 +41,7 @@ The purpose of this project is to understand how the shell works.
 
 ## Limitations :no_entry_sign:
 
- - No support for semicolons ;, pipes |, redirections < >, or
+ - No support for semicolons ;, redirections < >, or
    backgrounding &
  - No handling of special characters like ", ', \, *, #, etc.
  - No cursor movement or line editing features
