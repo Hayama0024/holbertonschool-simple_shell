@@ -20,6 +20,7 @@ The purpose of this project is to understand how the shell works.
 |--------|--------|
 |[AUTHORS](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/AUTHORS) |Contributors in this repository  |
 | [README.md](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/README.md) | Information about our repository |
+|[builtins.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/builtins.c)|Functions for built-in commands|
 | [executor.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/executor.c) | Execution function |
 |[input.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/input.c) |Functions for reading user input|
 |[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| main function|
@@ -61,15 +62,54 @@ $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 $ . /hsh
 ```
 ## Examples :pencil2:
-It works like this in interactive mode:
-1. /bin/ls
+**Interactive mode:**
+ /bin/ls
 ```
 $ /bin/ls
 AUTHORS  README.md  executor.c  hsh  input.c  main.c  shell.h  utils.c
 ```
-### Exmples Builtin
-Simple shell supports two built-in commands:exit and env.
-
+**Non-interactive mode:** echo "/bin/ls" | ./hsh<br>
+```
+$ echo "/bin/ls" | ./hsh
+AUTHORS    builtins.c  hsh      main.c   utils.c
+README.md  executor.c  input.c  shell.h
+```
+**External Commands:** ls , pwd, echo etc...<br>
+```
+$ ls
+AUTHORS    builtins.c  hsh      main.c   utils.c
+README.md  executor.c  input.c  shell.h
+$ pwd
+/home/emi/holbertonschool-simple_shell
+$ echo Hello
+Hello
+```
+**Built-in commands:**
+Simple shell supports two built-in commands: exit and env.<br>
+1. exit
+```
+julien@ubuntu:~/holbertonschool-simple_shell$ ./hsh
+$ exit
+julien@ubuntu:~/holbertonschool-simple_shell$
+```
+2. env
+```
+julien@ubuntu:~/holbertonschool-simple_shell$ ./hsh
+$ env
+USER=julien
+LANGUAGE=en_US
+SESSION=ubuntu
+COMPIZ_CONFIG_PROFILE=ubuntu
+SHLVL=1
+HOME=/home/julien
+C_IS=Fun_:)
+DESKTOP_SESSION=ubuntu
+LOGNAME=julien
+TERM=xterm-256color
+PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DISPLAY=:0
+$
+```
 
 ## Man page :book:
 ```
