@@ -52,5 +52,7 @@ int main(void)
 				last_status = 127;
 			}
 		}
+		free_args(lines);
+	}
 	return (0);
 }
