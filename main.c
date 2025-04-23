@@ -54,5 +54,5 @@ int main(void)
 		}
 		free_args(lines);
 	}
-	return (0);
+	return (last_status);
 }
