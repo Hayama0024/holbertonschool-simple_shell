@@ -79,6 +79,17 @@ README.md  executor.c  input.c  shell.h
 $ ls
 AUTHORS    builtins.c  hsh      main.c   utils.c
 README.md  executor.c  input.c  shell.h
+$ ls -l
+total 60
+-rw-r--r-- 1 emi emi   147 Apr 15 09:38 AUTHORS
+-rw-r--r-- 1 emi emi  4212 Apr 23 10:37 README.md
+-rw-r--r-- 1 emi emi  1133 Apr 23 10:32 builtins.c
+-rw-r--r-- 1 emi emi  1941 Apr 22 13:06 executor.c
+-rwxr-xr-x 1 emi emi 21800 Apr 23 13:35 hsh
+-rw-r--r-- 1 emi emi  3075 Apr 23 10:32 input.c
+-rw-r--r-- 1 emi emi   895 Apr 23 10:32 main.c
+-rw-r--r-- 1 emi emi   895 Apr 22 13:57 shell.h
+-rw-r--r-- 1 emi emi  2151 Apr 22 08:50 utils.c
 $ pwd
 /home/emi/holbertonschool-simple_shell
 $ echo Hello
