@@ -45,11 +45,12 @@ int main(void)
 					exit(last_status);
 				}
 				last_status = execute_command(args);
+				free_args(args);
 			}
-			free_args(args);
+			else
+			{
+				last_status = 127;
+			}
 		}
-
-		free_args(lines);
-	}
 	return (0);
 }
