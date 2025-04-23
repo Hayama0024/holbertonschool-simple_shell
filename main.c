@@ -38,14 +38,13 @@ int main(void)
 
 			if (args != NULL && args[0] != NULL)
 			{
-				last_status = execute_command(args);
-
-				if (last_status == 0)
+				if (strcmp(args[0], "exit") == 0)
 				{
 					free_args(args);
 					free_args(lines);
-					exit(0);
+					exit(last_status);
 				}
+				last_status = execute_command(args);
 			}
 			free_args(args);
 		}

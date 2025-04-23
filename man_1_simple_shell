@@ -1,0 +1,64 @@
+.TH hsh 1 "April 2025" "Holberton School" "User Commands"
+
+.SH NAME
+hsh \- simple UNIX command line interpreter
+
+.SH SYNOPSIS
+.B hsh
+.RI [ no arguments ]
+
+.SH DESCRIPTION
+hsh is a minimalist UNIX command line interpreter developed as part of the
+Holberton School curriculum. It replicates basic shell behavior such as
+executing commands, handling arguments, and supporting built-in commands
+like
+.B exit
+and
+.B env.
+
+The shell reads from standard input and executes commands in child processes.
+It supports both interactive and non-interactive modes.
+
+.SH FEATURES
+.TP
+.B Command execution
+Supports execution of commands using full or relative paths.
+
+.TP
+.B Built-in commands
+Includes built-in commands:
+.B exit
+(to quit) and
+.B env
+(to display environment variables).
+
+.TP
+.B PATH resolution
+Searches the PATH environment variable to find executables.
+
+.TP
+.B Error messages
+Displays consistent error messages when commands are not found.
+
+.SH EXAMPLES
+.TP
+.B $ ls -l
+Runs the "ls" program with the "-l" flag.
+
+.TP
+.B $ /bin/echo Hello
+Executes "echo" using an absolute path.
+
+.TP
+.B $ env
+Displays current environment variables.
+
+.SH RETURN VALUES
+.TP
+.B 0
+Success.
+
+.TP
+.B 127
+Command not found.
+
