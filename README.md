@@ -41,9 +41,9 @@ The purpose of this project is to understand how the shell works.
 
 ## Limitations :no_entry_sign:
 
- - No support for semicolons ;, redirections < >, or
+ - No support for semicolons ; , redirections < >, or
    backgrounding &
- - No handling of special characters like ", ', \, *, #, etc.
+ - No handling of special characters like " , ' , \ , * , # , etc.
  - No cursor movement or line editing features
  - No implementation of additional built-in commands (e.g., cd, alias,
    etc.)
