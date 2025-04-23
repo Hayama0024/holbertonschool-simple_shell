@@ -20,6 +20,7 @@ int handle_builtin(char **args)
 	else if (strcmp(args[0], "env") == 0)
 	{
 		int i = 0;
+
 		while (environ[i])
 		{
 			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
@@ -47,7 +48,7 @@ int check_and_run_builtin(char **args)
 	if (strcmp(args[0], "exit") == 0)
 		exit(0);
 
-	if (strcmp(args[0], "env" ) == 0)
+	if (strcmp(args[0], "env") == 0)
 	{
 		int i = 0;
 
