@@ -36,7 +36,7 @@ The purpose of this project is to understand how the shell works.
 - Handles EOF (Ctrl+D) for clean shell exit
 - Built-in support for:<br>
     exit — exits the shell<br>
-    env — displays the current environ<br>
+    env — displays the current environment<br>
 
 ## Limitations :no_entry_sign:
 
@@ -85,7 +85,7 @@ $ echo Hello
 Hello
 ```
 **Built-in commands:**
-Simple shell supports two built-in commands: exit and env.<br>
+Simple shell supports two built-in commands - exit and env.<br>
 1. exit
 ```
 julien@ubuntu:~/holbertonschool-simple_shell$ ./hsh
