@@ -38,6 +38,7 @@ char **split_line(char *line)
 {
 	char *token;
 	char **tokens = NULL;
+	char *trim_whitespace(char *line);
 	int bufsize = 64;
 	int i = 0;
 

@@ -20,7 +20,7 @@ char *read_input(void);
 
 /* コマンドの分割と実行 */
 char **split_line(char *line);
-char **realloc_tokens;
+char **realloc_tokens(char **tokens, int *bufsize);
 char **split_lines_by_newline(char *line);
 int execute_command(char **args);
 
