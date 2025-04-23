@@ -1,5 +1,24 @@
 #include "shell.h"
 
+/**
+ * realloc_tokens - Reallocate memory for a dynamically growing array
+ * @tokens: Pointer to the current array of strings
+ * @bufsize: Pointer to the current size of the buffer
+ *
+ * Return: Pointer to the reallocated array of strings
+ */
+
+char **realloc_tokens(char **tokens, int *bufsize)
+{
+        *bufsize *= 2;
+        tokens = realloc(tokens, sizeof(char *) * (*bufsize));
+        if (!tokens)
+        {
+                perror("realloc");
+                exit(EXIT_FAILURE);
+        }
+        return (tokens);
+}
 
 /**
  * split_line - Split a line into tokens (words) by whitespace
@@ -19,7 +38,7 @@ char **split_line(char *line)
 {
 	char *token;
 	char **tokens = NULL;
-	int bufsize = 64
+	int bufsize = 64;
 	int i = 0;
 
 	tokens = malloc(sizeof(char *) * bufsize);
@@ -53,25 +72,6 @@ char **split_line(char *line)
 	return (tokens);
 }
 
-/**
- * realloc_tokens - Reallocate memory for a dynamically growing array
- * @tokens: Pointer to the current array of strings
- * @bufsize: Pointer to the current size of the buffer
- *
- * Return: Pointer to the reallocated array of strings
- */
-
-char **realloc_tokens(char **tokens, int *bufsize)
-{
-	*bufsize *= 2;
-	tokens = realloc(tokens, sizeof(char *) * (*bufsize));
-	if (!tokens)
-	{
-		perror("realloc");
-		exit(EXIT_FAILURE);
-	}
-	return (tokens);
-}
 
 /**
  * split_lines_by_newline - Split a string into lines by '\n'

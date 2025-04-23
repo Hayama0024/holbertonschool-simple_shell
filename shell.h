@@ -10,7 +10,6 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <ctype.h>
 
 /* 環境変数 */
 extern char **environ;
@@ -21,6 +20,8 @@ char *read_input(void);
 
 /* コマンドの分割と実行 */
 char **split_line(char *line);
+char **realloc_tokens;
+char **split_lines_by_newline(char *line);
 int execute_command(char **args);
 
 /* メモリ解放やユーティリティ */
