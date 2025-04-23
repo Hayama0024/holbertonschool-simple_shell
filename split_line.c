@@ -10,14 +10,14 @@
 
 char **realloc_tokens(char **tokens, int *bufsize)
 {
-        *bufsize *= 2;
-        tokens = realloc(tokens, sizeof(char *) * (*bufsize));
-        if (!tokens)
-        {
-                perror("realloc");
-                exit(EXIT_FAILURE);
-        }
-        return (tokens);
+	*bufsize *= 2;
+	tokens = realloc(tokens, sizeof(char *) * (*bufsize));
+	if (!tokens)
+	{
+		perror("realloc");
+		exit(EXIT_FAILURE);
+	}
+	return (tokens);
 }
 
 /**
@@ -36,9 +36,10 @@ char **realloc_tokens(char **tokens, int *bufsize)
 
 char **split_line(char *line)
 {
+	char *trim_whitespace(char *line);
+
 	char *token;
 	char **tokens = NULL;
-	char *trim_whitespace(char *line);
 	int bufsize = 64;
 	int i = 0;
 
