@@ -62,6 +62,8 @@ int main(void)
 		process_input_line(line, &last_status);
 		free(line);
 	}
+	if (!isatty(STDIN_FILENO))
+		exit(last_status);
+
 	return (0);
 }
-
