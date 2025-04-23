@@ -20,6 +20,7 @@ The purpose of this project is to understand how the shell works.
 |--------|--------|
 |[AUTHORS](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/AUTHORS) |Contributors in this repository  |
 | [README.md](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/README.md) | Information about our repository |
+|[builtins.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/builtins.c)|Functions for built-in commands|
 | [executor.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/executor.c) | Execution function |
 |[input.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/input.c) |Functions for reading user input|
 |[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| main function|
@@ -35,7 +36,7 @@ The purpose of this project is to understand how the shell works.
 - Handles EOF (Ctrl+D) for clean shell exit
 - Built-in support for:<br>
     exit — exits the shell<br>
-    env — displays the current environ<br>
+    env — displays the current environment<br>
 
 ## Limitations :no_entry_sign:
 
@@ -61,15 +62,65 @@ $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 $ . /hsh
 ```
 ## Examples :pencil2:
-It works like this in interactive mode:
-1. /bin/ls
+**Interactive mode:**
+ /bin/ls
 ```
 $ /bin/ls
 AUTHORS  README.md  executor.c  hsh  input.c  main.c  shell.h  utils.c
 ```
-### Exmples Builtin
-Simple shell supports two built-in commands:exit and env.
-
+**Non-interactive mode:** echo "/bin/ls" | ./hsh<br>
+```
+$ echo "/bin/ls" | ./hsh
+AUTHORS    builtins.c  hsh      main.c   utils.c
+README.md  executor.c  input.c  shell.h
+```
+**External Commands:** ls , pwd, echo etc...<br>
+```
+$ ls
+AUTHORS    builtins.c  hsh      main.c   utils.c
+README.md  executor.c  input.c  shell.h
+$ ls -l
+total 60
+-rw-r--r-- 1 emi emi   147 Apr 15 09:38 AUTHORS
+-rw-r--r-- 1 emi emi  4212 Apr 23 10:37 README.md
+-rw-r--r-- 1 emi emi  1133 Apr 23 10:32 builtins.c
+-rw-r--r-- 1 emi emi  1941 Apr 22 13:06 executor.c
+-rwxr-xr-x 1 emi emi 21800 Apr 23 13:35 hsh
+-rw-r--r-- 1 emi emi  3075 Apr 23 10:32 input.c
+-rw-r--r-- 1 emi emi   895 Apr 23 10:32 main.c
+-rw-r--r-- 1 emi emi   895 Apr 22 13:57 shell.h
+-rw-r--r-- 1 emi emi  2151 Apr 22 08:50 utils.c
+$ pwd
+/home/emi/holbertonschool-simple_shell
+$ echo Hello
+Hello
+```
+**Built-in commands:**
+Simple shell supports two built-in commands - exit and env.<br>
+1. exit
+```
+julien@ubuntu:~/holbertonschool-simple_shell$ ./hsh
+$ exit
+julien@ubuntu:~/holbertonschool-simple_shell$
+```
+2. env
+```
+julien@ubuntu:~/holbertonschool-simple_shell$ ./hsh
+$ env
+USER=julien
+LANGUAGE=en_US
+SESSION=ubuntu
+COMPIZ_CONFIG_PROFILE=ubuntu
+SHLVL=1
+HOME=/home/julien
+C_IS=Fun_:)
+DESKTOP_SESSION=ubuntu
+LOGNAME=julien
+TERM=xterm-256color
+PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DISPLAY=:0
+$
+```
 
 ## Man page :book:
 ```
