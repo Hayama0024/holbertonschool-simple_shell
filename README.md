@@ -25,6 +25,7 @@ The purpose of this project is to understand how the shell works.
 |[input.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/input.c) |Functions for reading user input|
 |[main.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/main.c)| main function|
 [shell.h](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/shell.h)|Prototypes functions and headers|
+|[split_line.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/split_line.c) |Functions for splitting and processing commands|
 |[utils.c](https://github.com/Hayama0024/holbertonschool-simple_shell/blob/main/utils.c)|Auxiliary functions (e.g. prompt display, momory freeing) etc...)
 
 
