@@ -36,7 +36,7 @@ char *read_input(void)
 
 int is_whitespace(char c)
 {
-    return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f');
+	return (c == ' ' || c == '\t' || c == '\n');
 }
 
 /**
@@ -65,109 +65,3 @@ char *trim_whitespace(char *str)
 
 	return (str);
 }
-
-/**
- * split_line - Split a line into tokens (words) by whitespace
- *
- * This function takes a string and splits it into tokens based on
- * delimiters like space, tab, carriage return, and newline.
- * It dynamically allocates memory to hold the resulting array
- * of strings (words).
- *
- * @line: The input string to split
- *
- * Return: A NULL-terminated array of strings (tokens),
- *         or NULL on failure
- */
-
-char **split_line(char *line)
-{
-	char *token;
-	char **tokens = NULL;
-	int bufsize = 64;
-	int i = 0;
-
-	tokens = malloc(sizeof(char *) * bufsize);
-	if (!tokens)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-
-	line = trim_whitespace(line);
-	if (*line == '\0')
-	{
-		free(tokens);
-		return (NULL);
-	}
-
-	token = strtok(line, " \t\r\n");
-	while (token != NULL)
-	{
-		tokens[i] = strdup(token);
-		i++;
-
-		if (i >= bufsize)
-		{
-			bufsize *= 2;
-			tokens = realloc(tokens, sizeof(char *) * bufsize);
-			if (!tokens)
-			{
-				perror("realloc");
-				exit(EXIT_FAILURE);
-			}
-		}
-		token = strtok(NULL, " \t\r\n");
-	}
-	tokens[i] = NULL;
-
-	if (i == 0)
-	{
-		free(tokens);
-		return (NULL);
-	}
-
-		return (tokens);
-}
-
-/**
- * split_lines_by_newline - Split a string into lines by '\n'
- * @line: Input string to split
- * Return: NULL-terminated array of lines
- */
-
-
-char **split_lines_by_newline(char *line)
-{
-	char *token;
-	char **lines = NULL;
-	int bufsize = 16;
-	int i = 0;
-
-	lines = malloc(sizeof(char *) * bufsize);
-	if (!lines)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-
-	token = strtok(line, "\n");
-	while (token != NULL)
-	{
-		lines[i++] = strdup(token);
-		if (i >= bufsize)
-		{
-			bufsize *= 2;
-			lines = realloc(lines, sizeof(char *) * bufsize);
-			if (!lines)
-			{
-				perror("realloc");
-				exit(EXIT_FAILURE);
-			}
-		}
-		token = strtok(NULL, "\n");
-	}
-	lines[i] = NULL;
-	return (lines);
-}
-
