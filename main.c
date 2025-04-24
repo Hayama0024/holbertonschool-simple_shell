@@ -11,6 +11,12 @@ void process_input_line(char *line, int *last_status)
 	char **args = NULL;
 	int i;
 
+	if (line == NULL || *line == '\0' || trim_whitespace(line)[0] == '\0')
+	{
+	*last_status = 0;
+	return;
+	}
+
 	lines = split_lines_by_newline(line);
 	for (i = 0; lines[i]; i++)
 	{
