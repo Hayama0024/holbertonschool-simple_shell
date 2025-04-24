@@ -23,6 +23,7 @@ char **split_line(char *line);
 char **realloc_tokens(char **tokens, int *bufsize);
 char **split_lines_by_newline(char *line);
 int execute_command(char **args);
+char *trim_whitespace(char *str);
 
 /* メモリ解放やユーティリティ */
 void free_args(char **args);
