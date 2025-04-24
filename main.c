@@ -34,6 +34,9 @@ void process_input_line(char *line, int *last_status)
 	}
 		else
 		{
+			if (trim_whitespace(lines[i])[0] == '\0')
+			*last_status = 0;
+			else
 			*last_status = 127;
 		}
 	}
