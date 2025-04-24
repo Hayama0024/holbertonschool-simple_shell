@@ -128,7 +128,7 @@ $ man . /man_1_simple_shell
 ```
 ## Flow chart :round_pushpin:
 
-![Image](https://github.com/user-attachments/assets/51cd72be-0631-4e98-b36e-47c3ca66cd93)
+![Image](https://github.com/user-attachments/assets/c9025091-0bb7-4245-9640-4db8338d0255)
 
 
 ## Authors :bookmark:
