@@ -27,6 +27,7 @@ void process_input_line(char *line, int *last_status)
 		{
 			free_args(args);
 			free_args(lines);
+			free(line);
 			exit(*last_status);
 		}
 	*last_status = execute_command(args);

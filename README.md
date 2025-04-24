@@ -30,6 +30,9 @@ The purpose of this project is to understand how the shell works.
 
 
 ## Feautures :sparkles:
+
+- Supports interactive mode and non-interactive mode
+- Custom interactive shell prompt
 - Executes commands found in the system's PATH
 - Supports commands with arguments (e.g., ls -l, echo hello)
 - Gracefully handles command not found errors
