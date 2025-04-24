@@ -73,9 +73,10 @@ AUTHORS  README.md  executor.c  hsh  input.c  main.c  shell.h  utils.c
 ```
 **Non-interactive mode:** echo "/bin/ls" | ./hsh<br>
 ```
-$ echo "/bin/ls" | ./hsh
+julien@ubuntu:~/holbertonschool-simple_shell$ echo "/bin/ls" | ./hsh
 AUTHORS    builtins.c  hsh      main.c   utils.c
 README.md  executor.c  input.c  shell.h
+julien@ubuntu:~/holbertonschool-simple_shell$
 ```
 **External Commands:** ls , pwd, echo etc...<br>
 ```
